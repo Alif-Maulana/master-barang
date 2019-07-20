@@ -51,8 +51,59 @@
     <script src="<?php echo base_url(); ?>assets/vendor/modernizr/modernizr.js"></script>
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/form.css" />
+    <style type="text/css">
+        .label {
+            /* color: white; */
+            padding: 9px;
+            width: 55%;
+            /* padding-left: 7px;
+            width: 32%; */
+            text-transform: uppercase;
+            display: inline-block
+        }
 
+        .success {
+            background-color: #4CAF50;
+        }
 
+        /* Green */
+        .info {
+            background-color: #2196F3;
+        }
+
+        /* Blue */
+        .warning {
+            background-color: #ff9800;
+        }
+
+        /* Orange */
+        .danger {
+            background-color: #f44336;
+        }
+
+        /* Red */
+        .other {
+            background-color: #e7e7e7;
+            color: black;
+        }
+
+        /* Gray */
+    </style>
+    <style style="text/css">
+        .img-modal {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script src="<?php echo base_url(''); ?>assets/js/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Sembunyikan alert validasi kosong
+            $("#kosong").hide();
+        });
+    </script>
 </head>
 
 <body>

@@ -142,7 +142,7 @@
                                 <div class="row form-group">
                                     <div class="col-sm-6">
                                         <label>Kode Barang</label>
-                                        <input type="text" name="kode_barang" id="kode_barang" placeholder="ex : PSU" value="<?= $mbarang['kode_barang']; ?>" maxlgth="8en" class="form-control">
+                                        <input type="text" name="kode_barang" id="kode_barang" placeholder="ex : PSU" value="<?= $mbarang['kode_barang']; ?>" maxlgth="8en" class="form-control" onkeyup="this.value = this.value.toUpperCase();">
                                         <?= form_error('kode_barang', '<small class="text-danger pl-3">', '</small>') ?>
                                     </div>
 
@@ -160,12 +160,8 @@
                                             Kategori
                                         </label>
                                         <select data-plugin-selectTwo class="form-control populate" id="kategori" name="kategori">
-                                            <?php foreach ($kategori as $a) : ?>
-                                                <?php if ($a == $mbarang['kategori']) : ?>
-                                                    <option value="<?= $a; ?>" selected><?= $a; ?></option>
-                                                <?php else : ?>
-                                                    <option value="<?= $a; ?>"><?= $a; ?></option>
-                                                <?php endif; ?>
+                                            <?php foreach ($kategori as $k) : ?>
+                                                <option value="<?= $k['nama_kategori'] ?>"><?= $k['nama_kategori'] ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -174,12 +170,8 @@
                                             Satuan
                                         </label>
                                         <select data-plugin-selectTwo class="form-control populate" id="satuan" name="satuan">
-                                            <?php foreach ($satuan as $b) : ?>
-                                                <?php if ($b == $mbarang['satuan']) : ?>
-                                                    <option value="<?= $b; ?>" selected><?= $b; ?></option>
-                                                <?php else : ?>
-                                                    <option value="<?= $b; ?>"><?= $b; ?></option>
-                                                <?php endif; ?>
+                                            <?php foreach ($satuan as $s) : ?>
+                                                <option value="<?= $s['nama_satuan'] ?>"><?= $s['nama_satuan'] ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -211,13 +203,9 @@
                                             Kondisi
                                         </label>
                                         <select data-plugin-selectTwo class="form-control" id="kondisi_barang" name="kondisi_barang">
-                                            <?php foreach ($kondisi_barang as $c) : ?>
-                                                <?php if ($c == $mbarang['kondisi_barang']) : ?>
-                                                    <option value="<?= $c; ?>" selected><?= $c; ?></option>
-                                                <?php else : ?>
-                                                    <option value="<?= $c; ?>"><?= $c; ?></option>
-                                                <?php endif; ?>
-                                            <?php endforeach; ?>
+                                            <option value="Baru">Baru</option>
+                                            <option value="Bekas">Bekas</option>
+                                            <option value="Rusak">Rusak</option>
                                         </select>
                                     </div>
                                 </div>

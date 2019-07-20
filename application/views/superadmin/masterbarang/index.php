@@ -140,144 +140,146 @@
                             <h2 class="panel-title"><b>MASTER BARANG</b></h2>
                         </header>
                         <div class="panel-body">
+
                             <?= $this->session->flashdata('message'); ?>
-                            <table class="table table-bordered table-striped mb-none" id="datatable-tabletools">
-                                <p class="m-none">
-                                    <a href="<?php echo site_url('masterbarang/create'); ?>" type="button" class="mb-xs mt-xs mr-xs btn btn-sm btn-primary">
-                                        <i class="fa fa-plus"></i>&nbsp;
-                                        Add Master
-                                    </a>
-                                    <button type="button" class="mb-xs mt-xs mr-xs btn btn-sm btn-danger">
-                                        <i class="fa fa-minus"></i>&nbsp;
-                                        Delete Selected
-                                    </button>
-                                    <a href="#modalForm" class="modal-with-form btn btn-sm btn-warning">
-                                        <i class="fa fa-tag"></i>&nbsp;
-                                        Kategori
-                                    </a>
-                                    <!-- <button type="button" class="mb-xs mt-xs mr-xs btn btn-sm btn-default">
-                                        <i class="fa fa-print"></i>&nbsp;
-                                        Print
-                                    </button> -->
-                                </p>
-                                <br />
-                                <thead>
-                                    <tr>
-                                        <th>action</th>
-                                        <th>No</th>
-                                        <th>Kode Barang</th>
-                                        <th>Nama Barang</th>
-                                        <th>Kategori</th>
-                                        <th>Kondisi Barang</th>
-                                        <th>Nomor Serial</th>
-                                        <th>Nomor Produk</th>
-                                        <th>Keterangan Barang</th>
-                                        <th>Batas</th>
-                                        <th>Satuan</th>
-                                        <th>Photo</th>
-                                        <th>action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $no = 1;
-                                    foreach ($mbarang as $barang) {
-                                        ?>
-                                        <tr>
-                                            <td>
-                                                <div class="checkbox-custom chekbox-primary">
-                                                    <input id="checkall" type="checkbox" />
-                                                    <label for="for-project"></label>
-                                                </div>
-                                            </td>
-                                            <td><?= $no++; ?></td>
-                                            <td><?= $barang['kode_barang']; ?></td>
-                                            <td><?= $barang['nama_barang'] ?></td>
-                                            <td><?= $barang['kategori'] ?></td>
-                                            <td><?= $barang['kondisi_barang'] ?></td>
-                                            <td><?= $barang['nomor_serial'] ?></td>
-                                            <td><?= $barang['nomor_produk'] ?></td>
-                                            <td><?= $barang['keterangan_barang'] ?></td>
-                                            <td><?= $barang['batas'] ?></td>
-                                            <td><?= $barang['satuan'] ?></td>
-                                            <td><img src="<?= base_url('./image/') . $barang['photo']; ?>" width="75px" height="75px" /></td>
-                                            <td>
-                                                <a href="<?= base_url(''); ?>masterbarang/edit/<?= $barang['id']; ?>">
-                                                    <i class="fa fa-edit"></i>
-                                                </a> |
-                                                <a href="<?= base_url(''); ?>masterbarang/delete/<?= $barang['id']; ?>" onclick="return confirm('Sure want delete this data?')">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
-                </div>
-            </div>
+                            <table class="table table-bordered table-striped mb-none" id="datatable-default">
+                                <div class="row show-grid">
+                                    <div class="col-md-8">
+                                        <a href="<?php echo site_url('masterbarang/create'); ?>" type="button" class="mb-xs mt-xs mr-xs btn btn-sm btn-primary">
+                                            <i class="fa fa-plus"></i>&nbsp;
+                                            Add Master
+                                        </a>
+                                        <button id="delete" class="mb-xs mt-xs mr-xs btn btn-sm btn-danger"><i class="fa fa-minus"></i>&nbsp; Delete Selected </button>
+                                        <a href="#modalForm" class="modal-with-form mb-xs mt-xs btn btn-sm btn-warning">
+                                            <i class="fa fa-tag"></i>&nbsp;
+                                            Kategori
+                                        </a>
+                                    </div>
 
-            <div class="row">
-
-            </div>
-            <div class="row">
-
-            </div>
-            <!-- end: page -->
-            <!-- Modal Form -->
-            <div id="modalForm" class="modal-block modal-block-primary mfp-hide">
-                <section class="panel">
-                    <header class="panel-heading">
-                        <h2 class="panel-title">Kategori</h2>
-                    </header>
-                    <div class="panel-body">
-                        <form action="" method="post">
-                            <!-- <input type="text" value="1" hidden> -->
-                            <label>Kategori</label>
-                            <input type="text" name="nama_kategori" id="nama_kategori" placeholder="Masukan kategori" class="form-control" onkeyup="this.value = this.value.toUpperCase();">
-                            <?= form_error('nama_kategori', '<small class="text-danger pl-3">', '</small>') ?>
-                            <br />
-                            <button type="submit" name="btn" class="btn-sm btn btn-primary">Add</button>
-                        </form>
-                        <br />
-                        <table class="table table-bordered table-striped mb-none" id="datatable-default">
-                            <br />
-                            <thead>
-                                <tr>
-                                    <th>Nama Kategori</th>
-                                    <th>action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $no = 1;
-                                foreach ($kategori as $a) {
-                                    ?>
-                                    <tr>
-                                        <td><?= $a['nama_kategori'] ?></td>
-                                        <td>
-                                            <a href="<?= base_url(''); ?>kategori/edit/<?= $a['id']; ?>">
-                                                <i class="fa fa-edit"></i>
-                                            </a> |
-                                            <a href="<?= base_url(''); ?>kategori/delete/<?= $a['id']; ?>" onclick="return confirm('Sure want delete this data?')">
-                                                <i class="fa fa-trash-o"></i>
+                                    <div class="col-md-4">
+                                        <form action="<?php echo base_url("masterbarang/import"); ?>" method="post" enctype="multipart/form-data">
+                                            <a style="margin-left: 23%;" href="<?php echo base_url("excel/Master Barang.xlsx"); ?>" class="mb-xs mt-xs mr-xs btn btn-sm btn-default">
+                                                <i class="fa fa-print"></i>&nbsp;
+                                                Print
                                             </a>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <footer class="panel-footer">
-                        <div class="row">
-                            <div class="col-md-12 text-right">
-                                <button class="btn btn-default modal-dismiss">Cancel</button>
-                            </div>
+                                            <a style="margin-right: 10%; padding-right: 11%;" href="<?php echo base_url("masterbarang/form"); ?>" class="mb-xs mt-xs mr-xs btn btn-sm btn-success"><i class="fa fa-file-text"></i>&nbsp; Import Data Excel</a><br><br>
+                                        </form>
+                                    </div>
+                                </div>
                         </div>
-                    </footer>
-                </section>
+                </div>
+                <br />
+                <thead>
+                    <tr>
+                        <th>action</th>
+                        <th>No</th>
+                        <th>Kode Barang</th>
+                        <th>Nama Barang</th>
+                        <th>Kategori</th>
+                        <th>Kondisi Barang</th>
+                        <th>Nomor Serial</th>
+                        <th>Nomor Produk</th>
+                        <th>Keterangan Barang</th>
+                        <th>Batas</th>
+                        <th>Satuan</th>
+                        <th>Photo</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $no = 1;
+                    foreach ($mbarang as $barang) {
+                        ?>
+                        <tr class="gradeX">
+                            <td><input type="checkbox" id="<?= $barang['id']; ?>" name="id[]" value="<?= $barang['id']; ?>"></td>
+                            <td><?= $no++; ?></td>
+                            <td><?= $barang['kode_barang']; ?></td>
+                            <td><?= $barang['nama_barang'] ?></td>
+                            <td><?= $barang['nama_kategori'] ?></td>
+                            <td><?= $barang['kondisi_barang'] ?></td>
+                            <td><?= $barang['nomor_serial'] ?></td>
+                            <td><?= $barang['nomor_produk'] ?></td>
+                            <td><?= $barang['keterangan_barang'] ?></td>
+                            <td><?= $barang['batas'] ?></td>
+                            <td><?= $barang['nama_satuan'] ?></td>
+                            <td><img src="<?= base_url('./image/') . $barang['photo']; ?>" width="75px" height="75px" /></td>
+                            <td>
+                                <a href="<?= base_url(''); ?>masterbarang/edit/<?= $barang['id']; ?>">
+                                    <i class="fa fa-edit"></i>
+                                </a> |
+                                <a href="<?= base_url(''); ?>masterbarang/delete/<?php echo $barang['id']; ?>" onclick="return confirm('Sure want delete this data?')">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+                </table>
+
             </div>
+        </section>
+    </div>
+    </div>
+
+    <div class="row">
+
+    </div>
+    <div class="row">
+
+    </div>
+    <!-- end: page -->
+    <!-- Modal Form -->
+    <div id="modalForm" class="modal-block modal-block-primary mfp-hide">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Kategori</h2>
+            </header>
+            <div class="panel-body">
+                <form action="" method="post">
+                    <!-- <input type="text" value="1" hidden> -->
+                    <label>Kategori</label>
+                    <input type="text" name="nama_kategori" id="nama_kategori" placeholder="Masukan kategori" class="form-control" onkeyup="this.value = this.value.toUpperCase();">
+                    <?= form_error('nama_kategori', '<small class="text-danger pl-3">', '</small>') ?>
+                    <br />
+                    <button type="submit" name="btn" class="btn-sm btn btn-primary">Add</button>
+                </form>
+                <br />
+                <table class="table table-bordered table-striped mb-none" id="datatable-tabletools">
+                    <br />
+                    <thead>
+                        <tr>
+                            <th>Nama Kategori</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $no = 1;
+                        foreach ($kategori as $a) {
+                            ?>
+                            <tr>
+                                <td><?= $a['nama_kategori'] ?></td>
+                                <td>
+                                    <a href="<?= base_url(''); ?>kategori/edit/<?= $a['id']; ?>">
+                                        <i class="fa fa-edit"></i>
+                                    </a> |
+                                    <a href="<?= base_url(''); ?>kategori/delete/<?= $a['id']; ?>" onclick="return confirm('Sure want delete this data?')">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btn btn-default modal-dismiss">Cancel</button>
+                    </div>
+                </div>
+            </footer>
         </section>
     </div>
 </section>

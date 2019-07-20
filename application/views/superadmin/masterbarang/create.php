@@ -138,12 +138,12 @@
                         </header>
                         <div class="panel-body">
                             <?= $this->session->flashdata('message'); ?>
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('Masterbarang/store'); ?>" method="post" enctype="multipart/form-data">
                                 <div class="row form-group">
                                     <input type="text" name="masterbarang" value="0" hidden>
                                     <div class="col-sm-6">
                                         <label>Kode Barang</label>
-                                        <input type="text" name="kode_barang" id="kode_barang" placeholder="ex : PSU" maxlgth="8en" class="form-control">
+                                        <input type="text" name="kode_barang" id="kode_barang" placeholder="ex : PSU" maxlgth="8en" class="form-control" onkeyup="this.value = this.value.toUpperCase();">
                                         <?= form_error('kode_barang', '<small class="text-danger pl-3">', '</small>') ?>
                                     </div>
 
@@ -165,9 +165,9 @@
                                             Tambah Kategori
                                         </button>
                                         <select data-plugin-selectTwo class="form-control populate" id="kategori" name="kategori">
-                                            <option value="Elektronik">Elektronik</option>
-                                            <option value="Alat Tulis">Alat Tulis</option>
-                                            <option value="Printer">Printer</option>
+                                            <?php foreach ($kategori as $k) : ?>
+                                                <option value="<?= $k['nama_kategori'] ?>"><?= $k['nama_kategori'] ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                     <div class="col-sm-6">
@@ -179,8 +179,9 @@
                                             </a>
                                         </label>
                                         <select data-plugin-selectTwo class="form-control populate" id="satuan" name="satuan">
-                                            <option value="PCS">PCS</option>
-                                            <option value="Butir">Butir</option>
+                                            <?php foreach ($satuan as $s) : ?>
+                                                <option value="<?= $s['nama_satuan'] ?>"><?= $s['nama_satuan'] ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </div>

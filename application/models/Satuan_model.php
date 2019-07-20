@@ -12,8 +12,37 @@ class Satuan_model extends CI_Model
     {
         $nama_satuan = $this->input->post('nama_satuan');
 
+        // $this->form_validation->set_rules('nama_satuan', 'Satuan', 'trim|required');
+
+        // if ($this->form_validation->run() == false) {
+        //     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="failed">Failed Insert New Barang!</div>');
+        // } else {
+        //     $this->session->set_flashdata('message', '<div class="alert alert-success" role="success">Success Insert New Barang!</div>');
+        //     redirect('masterbarang/index');
+        // }
+
         $data = array(
-            'nama_satuan' => $nama_satuan
+            'nama_satuan' => $nama_satuan,
+        );
+
+        $this->db->insert('satuan', $data);
+    }
+
+    public function ModalSatuan()
+    {
+        $nama_satuan = $this->input->post('nama_satuan');
+
+        // $this->form_validation->set_rules('nama_satuan', 'Satuan', 'trim|required');
+
+        // if ($this->form_validation->run() == false) {
+        //     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="failed">Failed Insert New Barang!</div>');
+        // } else {
+        //     $this->session->set_flashdata('message', '<div class="alert alert-success" role="success">Success Insert New Barang!</div>');
+        //     redirect('masterbarang/index');
+        // }
+
+        $data = array(
+            'nama_satuan' => $nama_satuan,
         );
 
         $this->db->insert('satuan', $data);
